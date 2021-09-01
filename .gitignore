@@ -114,3 +114,6 @@ setup.cfg
 
 # settings.py
 settings.py
+
+# media directory
+media
