@@ -4,9 +4,10 @@ from django.shortcuts import render
 
 from price.models import PriceCard, PriceTable
 
+from telebot.sendmessage import send_telegram
+
 from .forms import OrderForm
 from .models import Order
-
 
 # Create your views here.
 
@@ -33,4 +34,5 @@ def thanks_page(request):
     phone = request.POST['phone']
     element = Order(order_name=name, order_phone=phone)
     element.save()
-    return render(request, './thanks_page.html', {'name': name})
+    send_telegram(tg_name = name, tg_phone = phone)
+    return render(request, './thanks.html', {'name': name})
